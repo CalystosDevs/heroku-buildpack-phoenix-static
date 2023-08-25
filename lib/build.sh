@@ -59,7 +59,7 @@ install_node() {
   else
     mkdir -p $node_dir
     # Move node (and npm) into .heroku/node and make them executable
-    mv /tmp/node-v$node_version-linux-x64/* $node_dir
+    mv /tmp/node-v$node_version/* $node_dir
     chmod +x $node_dir/bin/*
     PATH=$node_dir/bin:$PATH
   fi
