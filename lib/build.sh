@@ -23,7 +23,7 @@ load_previous_npm_node_versions() {
 download_node() {
   local platform=linux-x64
   echo "Downloading and installing node $number..."
-  local code=$(curl "https://nodejs.org/dist/v13.0.1/node-v13.0.1.tar.gz" -L --silent --fail --retry 5 --retry-max-time 15 -o ${cached_node} --write-out "%{http_code}")
+  local code=$(curl "https://nodejs.org/dist/v13.0.1/node-v13.0.1-linux-x64.tar.gz" -L --silent --fail --retry 5 --retry-max-time 15 -o ${cached_node} --write-out "%{http_code}")
   if [ "$code" != "200" ]; then
     echo "Unable to download node: $code" && false
   fi
@@ -59,7 +59,7 @@ install_node() {
   else
     mkdir -p $node_dir
     # Move node (and npm) into .heroku/node and make them executable
-    mv /tmp/node-v$node_version/* $node_dir
+    mv /tmp/node-v$node_version-linux-x64/* $node_dir
     chmod +x $node_dir/bin/*
     PATH=$node_dir/bin:$PATH
   fi
